@@ -1,0 +1,123 @@
+<html>
+<head>
+    <!-- Include meta tag to ensure proper rendering and touch zooming -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <!-- Include the jQuery library -->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+    {# <script type="text/javascript" src="cordova.js"></script> #}
+    <script type="text/javascript" src="js/databaseHandler.js"></script>
+    <script type="text/javascript" src="js/FicheHandler.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/redirect.js"></script>
+</head>
+<body>
+<div data-role="page" id="loadpage">
+  
+  <div data-role="header" data-position="fixed">
+      <a href="#loadPagePanel"
+         class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all ui-shadow"></a>
+      <h1>GESTION FICHES </h1>
+  </div>
+    <div data-role="main" class="ui-content">
+      <form class="ui-filterable">
+          <input data-type="search" id="txtKeyword"/>
+      </form>
+      
+      <div class="panel panel-primary">
+        <div class="panel-heading">Liste des Fiches </div>
+          <div class="panel-body" id="listeclient" >
+           
+          </div>
+        </div>
+      </div>
+       
+       
+
+        <div data-role="popup" id="popupUpdateDelete">
+          <div data-role="header">
+              <a class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all" data-rel="back"></a>
+              <h1>Options</h1>
+          </div>
+          <div data-role="main" class="ui-content">
+              <a class="ui-btn ui-icon-delete ui-btn-icon-left "
+                 onclick="deleteFiche()" >Suprimer</a>
+             
+              <a class="ui-btn ui-icon-edit ui-btn-icon-left"
+                 href="#updatedialog">Modifier</a>
+              
+              <a class="ui-btn ui-icon-plus ui-btn-icon-left "
+                 href="#detail">Lire plus </a>
+           
+          </div>
+        </div>
+    </div>
+</div>
+<div data-role="dialog" id="updatedialog">
+  <div data-role="header">
+      <h1>Editer une fiche </h1>
+  </div>
+  <div data-role="main" class="ui-content">
+    <form>
+        <div class="ui-field-contain">
+            <label for="txtName">Enseigne:</label>
+            <input type="text" id="enseigne" data-clear-btn="true"/>
+            <br>  
+            <label for="txtQuantity">Nom :</label>
+            <input type="text" id="nom" data-clear-btn="true" required />
+            <br>  
+            <label for="txtQuantity">Prenom :</label>
+            <input type="text" id="prenom" data-clear-btn="true"/>
+            <br>  
+            <label for="txtQuantity">email :</label>
+            <input type="email" id="email" data-clear-btn="true"/>
+            <br>  
+            <label for="txtQuantity">Telephone :</label>
+            <input type="tel" id="telephone"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required data-clear-btn="true"/>
+            <br>     
+            <label for="txtQuantity">Code Postale :</label>
+            <input type="Number" id="postale"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required data-clear-btn="true"/>
+            <br>                       
+            <label for="textarea">Adresse complete:</label>
+            <textarea cols="40" rows="8" id="adresse"></textarea>
+            <br>  
+            <label for="date"> Date de Renouvelement:</label>
+            <input type="date" name="date" id="date" value="">
+            <br> 
+             <label for="file">selectionner des fichiers:</label>
+            <input type="file"  id="image" multiple="multiple" > 
+            <br>
+            <label for="textarea">Description:</label>
+            <textarea cols="40" rows="8" id="detail"></textarea>
+            <br> 
+            <br> 
+            <label for="btnAdd"></label>
+               <a class="ui-btn ui-icon-plus ui-btn-icon-left"
+               id="btnAdd" onclick="updateFiche()">Modifier Fiche</a>
+        </div>
+    </form>
+  </div>
+</div>
+
+<!-- detail de la fiche  -->
+
+<div data-role="dialog" id="detail">
+  <div data-role="header">
+      <h1>Description de la Fiche  </h1>
+  </div>
+  <div data-role="main" class="ui-content">
+    <div class="panel-body" id="listeclient" >
+           
+    </div>
+    
+  </div>
+</div>
+
+    </body>
+</html>

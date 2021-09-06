@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Include meta tag to ensure proper rendering and touch zooming -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <!-- Include the jQuery library -->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+    {# <script type="text/javascript" src="cordova.js"></script> #}
+    <script type="text/javascript" src="js/databaseHandler.js"></script>
+    <script type="text/javascript" src="js/FicheHandler.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/redirect.js"></script>
+</head>
+<body >
+    <div data-role="header" data-position="fixed">
+        
+        <h1 id="ajouter_fiche">dashboard</h1>
+    </div>
+    <fieldset class="ui-grid-b" style="width:100%;display:inline-flex">
+        <div class="ui-block-a" style="width:46%"><button onclick="redirection('listeFiche.html#loadpage')">Accueil </button></div>
+        <div class="ui-block-b" style="width:46%"><button onclick="redirection('add_fiche.html')">creer une fiche </button></div>
+    </fieldset>
+    <fieldset class="ui-grid-b" style="width:100%;display:inline-flex">
+        <div class="ui-block-a" style="width:46%"><button onclick="redirection('localisation.html')">Geolocalisation </button></div>
+        <div class="ui-block-b" style="width:46%"><button>Fiche & Date  </button></div>
+    </fieldset>
+    <fieldset class="ui-grid-b" style="width:100%;display:inline-flex">
+            <div class="ui-block-a" style="width:46%"><button>Documents  </button></div>
+            <div class="ui-block-b" style="width:46%"><button>Parametres </button></div>
+    </fieldset>
+     <div class="ui-block-b" style="width:98%"><button onclick="redirection('login.html')">QUITTER </button></div>
+    
+        
+</body>
+</html>

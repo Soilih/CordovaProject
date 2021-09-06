@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Include meta tag to ensure proper rendering and touch zooming -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include jQuery Mobile stylesheets -->
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/index.css">
+    <!-- Include the jQuery library -->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+    <script type="text/javascript" src="cordova.js"></script> 
+    <script type="text/javascript" src="js/databaseHandler.js"></script>
+    <script type="text/javascript" src="js/FicheHandler.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/redirect.js"></script>
+    
+   
+    <title>Nixia Aplication</title>
+</head>
+<body>
+<div data-role="page" id="addpage">
+    <div data-role="panel" id="addPagePanel">
+
+       <ul data-role="listview" data-inset="true">
+             <li data-icon="home">  <a onclick="redirection('index.html')">home</a> </li> 
+        </ul>
+    </div> 
+    <div data-role="header" data-position="fixed">
+        <a href="#addPagePanel"
+           class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all ui-shadow"></a>
+        <h1 id="ajouter_fiche">Geolocalisation </h1>
+    </div>
+    <div data-role="main" class="ui-content">
+        <button id = "getPosition">CURRENT POSITION</button>
+        <button id = "watchPosition">WATCH POSITION</button>
+    </div>
+</div> 
+</div>
+
+<script>
+
+    document.getElementById("getPosition").addEventListener("click", getPosition);
+    document.getElementById("watchPosition").addEventListener("click", watchPosition);
+    function getPosition() {
+        var options = {
+           enableHighAccuracy: true,
+           maximumAge: 3600000
+        }
+    }
+    
+    var watchID = navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    
+    function onSuccess(position) {
+      alert('Latitude: '          + position.coords.latitude          + '\n' +
+          'Longitude: '         + position.coords.longitude         + '\n' +
+          'Altitude: '          + position.coords.altitude          + '\n' +
+          'Accuracy: '          + position.coords.accuracy          + '\n' +
+          'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+          'Heading: '           + position.coords.heading           + '\n' +
+          'Speed: '             + position.coords.speed             + '\n' +
+          'Timestamp: '         + position.timestamp                + '\n');
+    };
+    
+    function onError(error) {
+       alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+    }
+    
+    //une autre methode
+    
+    function watchPosition() {
+        var options = {
+           maximumAge: 3600000,
+           timeout: 3000,
+           enableHighAccuracy: true,
+        }
+        var watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
+     
+        function onSuccess(position) {
+           alert('Latitude: '          + position.coords.latitude          + '\n' +
+              'Longitude: '         + position.coords.longitude         + '\n' +
+              'Altitude: '          + position.coords.altitude          + '\n' +
+              'Accuracy: '          + position.coords.accuracy          + '\n' +
+              'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
+              'Heading: '           + position.coords.heading           + '\n' +
+              'Speed: '             + position.coords.speed             + '\n' +
+              'Timestamp: '         + position.timestamp                + '\n');
+        };
+     
+        function onError(error) {
+           alert('code: '    + error.code    + '\n' +'message: ' + error.message + '\n');
+        }
+     }
+</script>
